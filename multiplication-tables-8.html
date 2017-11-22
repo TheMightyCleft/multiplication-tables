@@ -1,0 +1,122 @@
+<html>
+<title>Some fun multiplication tables done in JavaScript</title>
+<head>
+	<style>
+body  {
+			background-image: url("https://c402277.ssl.cf1.rackcdn.com/photos/1257/images/hero_full/SeaTurtle-1600x600px.jpg?1345590072");
+	    background-repeat: no-repeat;
+	    background-attachment: fixed;
+	    background-position: center;
+
+color: white;
+font: 15px arial, sans-serif;
+}
+
+h1  {
+color: black;
+font: 30px arial, sans-serif;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- Next div is a top nav-->
+<div class="topnav">
+  <a href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-random.html">random</a>
+  <a href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-1.html">1x</a>
+  <a href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-2.html">2x</a>
+  <a href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-3.html">3x</a>
+	<a href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-4.html">4x</a>
+	<a href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-5.html">5x</a>
+	<a href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-6.html">6x</a>
+	<a href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-7.html">7x</a>
+	<a class="active" href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-8.html">8x</a>
+	<a href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-9.html">9x</a>
+	<a href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-10.html">10x</a>
+	<a href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-11.html">11x</a>
+	<a href="/Users/cliffbeale/Documents/GitHub/multiplication-tables/multiplication-tables-12.html">12x</a>
+</div>
+
+<h1 align="center">Turtle times tables quiz</h1>
+
+<script>
+
+var varNumber2=8; //look for way to insert this number from click on nav (ie selected times table number)
+var varUserAnswer;
+var varActualAnswer;
+
+
+
+function problem(paramTimesTable) // look for way to save this function to .js file and call from page
+{
+    varNumber1 = Math.floor(1 + Math.random() * 12 );//generates rand integer between 1 and 12
+
+
+    var question = document.getElementById("question");
+    question.innerHTML = "What is " + varNumber1 + " x " + paramTimesTable + " ?<br/><br/>";
+    varActualAnswer = (varNumber1*paramTimesTable);
+}
+
+
+
+function checkAnswer()  // look for way to save this function to .js file and call from page
+{
+    var varStatusDiv = document.getElementById("status");
+    varUserAnswer=document.getElementById("answer").value;
+    if(varUserAnswer != varActualAnswer)
+    varStatusDiv.innerHTML="Oops! You either forgot to add your answer or it was wrong. Please try again.";
+    else
+    //if (varUserAnswer==varActualAnswer) - remove from all other pages!!!
+    {
+        varStatusDiv.innerHTML="Yes! Well done! You did it! Now try another :-)";
+        document.getElementById("answer").value = "";
+        problem(varNumber2);
+    }
+}
+
+</script>
+
+<form>
+    <div id ="question"></div>
+    <input id="answer" type="text"/>
+    <input type="button" value="Check if I'm right" onclick="checkAnswer()"/>
+    <br/>
+    <br/>
+    <div id ="status">Click the "Check if I'm right" button (above) to see if you're correct!</div>
+</form>
+<script>
+    problem(varNumber2);
+</script>
+</body>
+</html>
